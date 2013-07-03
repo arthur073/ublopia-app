@@ -14,16 +14,16 @@
     <script type="text/javascript" src="js/bootstrap.min.js"></script>
     <script type="text/javascript" src="js/app.js"></script>
 
-    <title>PhoneGap Demo Bootstrap</title>
+    <title>Ublopia</title>
 </head>
 <body>
 
 
 
-<div class="navbar navbar-inverse" style="position: fixed; width: 100%">
+<div class="navbar navbar-inverse">
     <div class="navbar-inner">
         <a class="brand" href="#">Ublopia</a>
-        <a id="btnAcrid" href="#" class="btn btn-danger pull-right">Refresh</a>
+        <a id="btnRefresh" href="#" class="btn btn-danger pull-right" onclick="refresh();">Refresh</a>
     </div>
 </div>
 
@@ -35,80 +35,106 @@
 
 
         <div class="span10">
+            <div id="listNotif" class="row-fluid">
 
-
-
-            <div class="tab-pane" id="tab2">
-
-                <div class="row-fluid">
-
-                    <ul class="thumbnails">
-                        <li class="span4">
-                            <div class="thumbnail">
-                                <img data-src="holder.js/300x200" alt="300x200" style="width: 300px; height: 150px;" src="img/map.gif">
-                                <div class="caption">
-                                    <h3>Hungry ?</h3>
-                                    <p>We found a place 5 minutes from your place that you might like.</p>
-                                    <p><a href="#" class="btn btn-primary">Take me there !</a></p>
-                                </div>
+                <ul class="thumbnails">
+                    <li class="span4">
+                        <div class="thumbnail">
+                            <img data-src="holder.js/300x200" style="width: 300px; height: 150px;" src="img/shop.jpg">
+                            <div class="caption">
+                                <h3>Wanna go shopping ?</h3>
+                                <p>I have found your shopping list and you still have items to buy. Here is a shop where you can go !</p>
+                                <p><a href="#" class="btn btn-danger">Take me there !</a></p>
                             </div>
-                        </li>
-                        <li class="span4">
-                            <div class="thumbnail">
-                                <img data-src="holder.js/300x200" alt="300x200" style="width: 300px; height: 150px;" src="img/map.gif">
-                                <div class="caption">
-                                    <h3>Hungry ?</h3>
-                                    <p>We found a place 5 minutes from your place that you might like.</p>
-                                    <p><a href="#" class="btn btn-primary">Take me there !</a></p>
-                                </div>
+                        </div>
+                    </li>
+                </ul>
+
+                <ul class="thumbnails">
+                    <li class="span4">
+                        <div class="thumbnail">
+                            <img data-src="holder.js/300x200" style="width: 300px; height: 150px;" src="img/movie.jpg">
+                            <div class="caption">
+                                <h3>Want to see a movie ?</h3>
+                                <p>I know that you are interested in Sci-Fi movies, why don't you check this one out ?</p>
+                                <p><a href="#" class="btn btn-danger">Take me there !</a></p>
                             </div>
-                        </li>
-                        <li class="span4">
-                            <div class="thumbnail">
-                                <img data-src="holder.js/300x200" alt="300x200" style="width: 300px; height: 150px;" src="img/map.gif">
-                                <div class="caption">
-                                    <h3>Hungry ?</h3>
-                                    <p>We found a place 5 minutes from your place that you might like.</p>
-                                    <p><a href="#" class="btn btn-primary">Take me there !</a></p>
-                                </div>
-                            </div>
-                        </li>
-                    </ul>
-                </div>
+                        </div>
+                    </li>
+                </ul>
+
 
             </div>
-
-
-
-
         </div>
-
     </div>
 </div>
 
-<div id="deviceInfo" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="deviceInfoLabel" aria-hidden="true">
 
-    <div class="modal-header">
 
-        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-        <h3>Modal header</h3>
 
-    </div>
+<script>
 
-    <div class="modal-body">
+    function refresh() {
 
-        <p id="deviceInfoBody" style="text-align: left">Device info</p>
+        function httpGet(theUrl)
+        {
+            var xmlHttp = null;
 
-    </div>
+            xmlHttp = new XMLHttpRequest();
+            xmlHttp.open( "GET", theUrl, false );
+            xmlHttp.send( null );
+            var jsonArray = JSON.parse(xmlHttp.responseText);
 
-    <div class="modal-footer">
+            for (var i=1; i < jsonArray.length; i++){
+                var values = jsonArray[i].value.split('##');
+                insertElem(values[0],values[2],'eat.jpg');
+            }
+        }
 
-        <button class="btn btn-primary" data-dismiss="modal" aria-hidden="true">Close</button>
+        httpGet("http://tuple-center.herokuapp.com/take/user1/notifications.json?passwd=356a192b7913b04c54574d18c28d46e6395428ab");
+    }
 
-    </div>
+    function insertElem(title, content, imglink) {
+        var listToInsert = document.getElementById("listNotif");
+        var insertBefore = listToInsert.childNodes[1];
 
-</div>
+        var ulToInsert = document.createElement("ul");
+        ulToInsert.className = "thumbnails blink";
 
+        var liToInsert = document.createElement("li");
+        liToInsert.className = "span4";
+        var divToInsert = document.createElement("div");
+        divToInsert.className = "thumbnail";
+
+
+        var img = document.createElement("img");
+        img.src = "img/" + imglink;
+        img.style.height = '150px';
+        img.style.width = '300px';
+
+        var titlecaption = document.createElement("h3");
+        titlecaption.innerHTML = title;
+
+        var contentcaption = document.createElement("p");
+        contentcaption.innerHTML = content;
+
+        var buttoncaption = document.createElement("p");
+        buttoncaption.innerHTML = '<a href="#" class="btn btn-danger">Take me there !</a>';
+
+        var caption = document.createElement("div");
+        caption.className = "caption"
+        caption.appendChild(titlecaption);
+        caption.appendChild(contentcaption);
+        caption.appendChild(buttoncaption);
+
+        divToInsert.appendChild(img);
+        divToInsert.appendChild(caption);
+        liToInsert.appendChild(divToInsert);
+        ulToInsert.appendChild(liToInsert);
+
+        listToInsert.insertBefore(ulToInsert, insertBefore);
+    }
+</script>
 
 </body>
 </html>
