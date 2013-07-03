@@ -1,4 +1,9 @@
-var app = 
+
+
+
+
+
+var app =
 {
     init: function()
 	{
@@ -8,12 +13,12 @@ var app =
     deviceReadyHandler: function()
 	{
         document.addEventListener("backbutton", app.backButtonHandler, true);
-        
 		setTimeout(function()
 		{
 			navigator.splashscreen.hide();
 		},
 		1000);
+
     },
 	
     backButtonHandler: function()
@@ -36,3 +41,6 @@ var app =
 };
 
 app.init();
+
+
+
