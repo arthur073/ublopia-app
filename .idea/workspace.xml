@@ -7,8 +7,8 @@
     </list>
     <ignored path="mobile-app.iws" />
     <ignored path=".idea/workspace.xml" />
-    <file path="/Dummy.txt" changelist="a8c7a692-1f7c-46c0-9425-88221fd801e1" time="1372934459055" ignored="false" />
-    <file path="/index.html" changelist="a8c7a692-1f7c-46c0-9425-88221fd801e1" time="1372934799552" ignored="false" />
+    <file path="/Dummy.txt" changelist="a8c7a692-1f7c-46c0-9425-88221fd801e1" time="1372934837248" ignored="false" />
+    <file path="/index.html" changelist="a8c7a692-1f7c-46c0-9425-88221fd801e1" time="1372935194683" ignored="false" />
     <file path="$PROJECT_DIR$/../Flat-UI-master/bootstrap/js/application.js" changelist="a8c7a692-1f7c-46c0-9425-88221fd801e1" time="1372762859346" ignored="false" />
     <file path="$PROJECT_DIR$/../pg-demo-bootstrap-master/index.html" changelist="a8c7a692-1f7c-46c0-9425-88221fd801e1" time="1372846320577" ignored="false" />
     <file path="/jquery.mobile.flatui.css" changelist="a8c7a692-1f7c-46c0-9425-88221fd801e1" time="1372774780816" ignored="false" />
@@ -37,7 +37,7 @@
       <file leaf-file-name="index.html" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/index.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="106" column="0" selection-start="3855" selection-end="3855" vertical-scroll-proportion="0.63182527">
+            <state line="98" column="40" selection-start="3720" selection-end="3720" vertical-scroll-proportion="0.44461778">
               <folding>
                 <element signature="n#style#0;n#div#0;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
                 <element signature="n#style#0;n#div#0;n#div#1;n#body#0;n#html#0;n#!!top" expanded="true" />
@@ -301,7 +301,11 @@
       <created>1372934462141</created>
       <updated>1372934462141</updated>
     </task>
-    <option name="localTasksCounter" value="9" />
+    <task id="LOCAL-00009" summary="v1.1">
+      <created>1372934840623</created>
+      <updated>1372934840623</updated>
+    </task>
+    <option name="localTasksCounter" value="10" />
     <servers />
   </component>
   <component name="TodoView" selected-index="0">
@@ -534,7 +538,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/index.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="106" column="0" selection-start="3855" selection-end="3855" vertical-scroll-proportion="0.63182527">
+        <state line="98" column="40" selection-start="3720" selection-end="3720" vertical-scroll-proportion="0.44461778">
           <folding>
             <element signature="n#style#0;n#div#0;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
             <element signature="n#style#0;n#div#0;n#div#1;n#body#0;n#html#0;n#!!top" expanded="true" />

@@ -95,7 +95,7 @@
         //checkConnection();
         $.support.cors = true;
 
-        promise.get('http://tuple-center.herokuapp.com/take/user1/notifications.json?passwd=356a192b7913b04c54574d18c28d46e6395428ab').then(function(error, text, xhr) {
+        promise.get('http://tuple-center.herokuapp.com/take/user1/notifications.json?passwd=356a192b7913b04c54574d18c28d46e6395428ab&random='+Math.random()).then(function(error, text, xhr) {
             $("#debug").html(text.length);
 
             if (error) {
