@@ -25,6 +25,12 @@ div#container {
     font-size: 180%;
 }
 
+#loader img {
+    position: fixed;
+    top : 20px;
+}
+
+
 
 @keyframes fade {
     from { opacity: 0; }
@@ -46,14 +52,8 @@ div#container {
 }
 
 
-#noConnection {
+#noConnection, #Connection {
     margin-top : 100px;
     font-size: 180%;
     color: #ced5dd;
-}
-
-#Connection {
-    margin-top : 100px;
-    font-size: 180%;
-    color: #da4f49;
 }

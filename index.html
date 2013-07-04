@@ -23,22 +23,25 @@
 <div class="navbar navbar-inverse">
     <div class="navbar-inner">
         <a class="brand" href="#">Ublopia</a>
-        <a id="btnRefresh" href="#" class="btn btn-danger pull-right" onclick="refresh();">Refresh</a>
+        <div id="loader"  style="display: none;">
+            <img src="img/ajax-loader_b.gif"/>
+        </div>
+        <a id="btnRefresh" href="#" class="btn btn-danger pull-right" onclick="refresh();return false;">Refresh</a>
     </div>
 </div>
 
-
 <div id="container" class="container-fluid">
 
-    <div id="loader" class="text-center">
-        <img class="text-center" src="img/ajax-loader.gif"/>
-    </div>
-    <div id="noConnection" class="text-center">
-        <img class="text-center" src="img/nonetwork.jpg"/><br>
+
+
+
+
+    <div id="noConnection" class="text-center" style="display: none">
+        <img class="text-center" src="img/nonetwork.jpg" style="width: 200px; height: 200px"/><br>
         No connection available
     </div>
-    <div id="Connection" class="text-center">
-        <img class="text-center" src="img/network.jpg"/><br>
+    <div id="Connection" class="text-center" >
+        <img class="text-center" src="img/network.png" style="width: 200px; height: 200px"/><br><br>
         Waiting for notifications
     </div>
 
@@ -84,24 +87,32 @@
 
 
 <script>
-    document.getElementById("loader").style.display = 'none';
-    checkConnection();
-
 
 
     function refresh() {
-        document.getElementById("loader").style.display = 'block';
+        document.getElementById("loader").style.display = 'inline';
         checkConnection();
 
 
         function httpGet(theUrl)
         {
+            $.support.cors = true;
+            //$.mobile.allowCrossDomainPages = true;
             var xmlHttp = null;
 
             xmlHttp = new XMLHttpRequest();
             xmlHttp.open( "GET", theUrl, false );
             xmlHttp.send( null );
             var jsonArray = JSON.parse(xmlHttp.responseText);
+            //alert(document.getElementById("listNotif").childNodes.length);
+
+            if (jsonArray.length > 1) {
+                // We have some notifications
+                document.getElementById('Connection').style.display = 'none';
+            } else if (document.getElementById("listNotif").childNodes.length <= 3) {
+                document.getElementById('Connection').style.display = 'block';
+            }
+
 
             for (var i=1; i < jsonArray.length; i++){
                 var values = jsonArray[i].value.split('##');
@@ -162,22 +173,23 @@
     function checkConnection() {
         var networkState = navigator.network.connection.type;
 
-        var states = {};
+        /*var states = {};
         states[Connection.UNKNOWN]  = 'Unknown connection';
         states[Connection.ETHERNET] = 'Ethernet connection';
         states[Connection.WIFI]     = 'WiFi connection';
         states[Connection.CELL_2G]  = 'Cell 2G connection';
         states[Connection.CELL_3G]  = 'Cell 3G connection';
         states[Connection.CELL_4G]  = 'Cell 4G connection';
-        states[Connection.NONE]     = 'No network connection';
+        states[Connection.NONE]     = 'No network connection';   */
 
-        if (states[networkState] != 'No network connection') {
+        /*if (networkState != Connection.NONE && networkState != Connection.CELL_2G) {
+
             document.getElementById('noConnection').style.display = 'none';
             document.getElementById('Connection').style.display = 'block';
         } else {
             document.getElementById('noConnection').style.display = 'block';
             document.getElementById('Connection').style.display = 'none';
-        }
+        }  */
     }
 
 </script>
