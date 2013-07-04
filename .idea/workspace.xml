@@ -2,18 +2,13 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="a8c7a692-1f7c-46c0-9425-88221fd801e1" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/js/promise.min.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/img/network.png" afterPath="$PROJECT_DIR$/img/network.png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/js/app.js" afterPath="$PROJECT_DIR$/js/app.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/config.xml" afterPath="$PROJECT_DIR$/config.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/index.html" afterPath="$PROJECT_DIR$/index.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/css/style.css" afterPath="$PROJECT_DIR$/css/style.css" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="mobile-app.iws" />
     <ignored path=".idea/workspace.xml" />
-    <file path="/Dummy.txt" changelist="a8c7a692-1f7c-46c0-9425-88221fd801e1" time="1372931719308" ignored="false" />
-    <file path="/index.html" changelist="a8c7a692-1f7c-46c0-9425-88221fd801e1" time="1372934421398" ignored="false" />
+    <file path="/Dummy.txt" changelist="a8c7a692-1f7c-46c0-9425-88221fd801e1" time="1372934459055" ignored="false" />
+    <file path="/index.html" changelist="a8c7a692-1f7c-46c0-9425-88221fd801e1" time="1372934799552" ignored="false" />
     <file path="$PROJECT_DIR$/../Flat-UI-master/bootstrap/js/application.js" changelist="a8c7a692-1f7c-46c0-9425-88221fd801e1" time="1372762859346" ignored="false" />
     <file path="$PROJECT_DIR$/../pg-demo-bootstrap-master/index.html" changelist="a8c7a692-1f7c-46c0-9425-88221fd801e1" time="1372846320577" ignored="false" />
     <file path="/jquery.mobile.flatui.css" changelist="a8c7a692-1f7c-46c0-9425-88221fd801e1" time="1372774780816" ignored="false" />
@@ -42,7 +37,7 @@
       <file leaf-file-name="index.html" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/index.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="37" column="50" selection-start="1281" selection-end="1281" vertical-scroll-proportion="0.86583465">
+            <state line="106" column="0" selection-start="3855" selection-end="3855" vertical-scroll-proportion="0.63182527">
               <folding>
                 <element signature="n#style#0;n#div#0;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
                 <element signature="n#style#0;n#div#0;n#div#1;n#body#0;n#html#0;n#!!top" expanded="true" />
@@ -302,7 +297,11 @@
       <created>1372931722350</created>
       <updated>1372931722350</updated>
     </task>
-    <option name="localTasksCounter" value="8" />
+    <task id="LOCAL-00008" summary="v1.1">
+      <created>1372934462141</created>
+      <updated>1372934462141</updated>
+    </task>
+    <option name="localTasksCounter" value="9" />
     <servers />
   </component>
   <component name="TodoView" selected-index="0">
@@ -535,7 +534,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/index.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="37" column="50" selection-start="1281" selection-end="1281" vertical-scroll-proportion="0.86583465">
+        <state line="106" column="0" selection-start="3855" selection-end="3855" vertical-scroll-proportion="0.63182527">
           <folding>
             <element signature="n#style#0;n#div#0;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
             <element signature="n#style#0;n#div#0;n#div#1;n#body#0;n#html#0;n#!!top" expanded="true" />

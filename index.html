@@ -96,32 +96,40 @@
         $.support.cors = true;
 
         promise.get('http://tuple-center.herokuapp.com/take/user1/notifications.json?passwd=356a192b7913b04c54574d18c28d46e6395428ab').then(function(error, text, xhr) {
+            $("#debug").html(text.length);
+
             if (error) {
-                alert('Error ' + xhr.status);
+                $("#debug").html('ERROR');
                 return;
             }
-            $("#debug").html(text.length);
-            alert('The page contains ' + text.length + ' character(s).');
+
+            var jsonArray = JSON.parse(text);
+
+            if (jsonArray.length > 1) {
+                // We have some notifications
+                document.getElementById('Connection').style.display = 'none';
+            } else if (document.getElementById("listNotif").childNodes.length <= 3) {
+                document.getElementById('Connection').style.display = 'block';
+            }
+
+
+            for (var i=1; i < jsonArray.length; i++){
+                var values = jsonArray[i].value.split('##');
+                insertElem(values[0],values[2],'eat.jpg');
+            }
+
+
+            setTimeout(function()
+                    {
+                        document.getElementById("loader").style.display = 'none';
+                    },
+                    2000);
         });
 
 
         /*$.ajax({
             success: function (data) {
-                var jsonArray = data;
-                //alert(document.getElementById("listNotif").childNodes.length);
 
-                if (jsonArray.length > 1) {
-                    // We have some notifications
-                    document.getElementById('Connection').style.display = 'none';
-                } else if (document.getElementById("listNotif").childNodes.length <= 3) {
-                    document.getElementById('Connection').style.display = 'block';
-                }
-
-
-                for (var i=1; i < jsonArray.length; i++){
-                    var values = jsonArray[i].value.split('##');
-                    insertElem(values[0],values[2],'eat.jpg');
-                }
                 setTimeout(function()
                         {
                             document.getElementById("loader").style.display = 'none';
