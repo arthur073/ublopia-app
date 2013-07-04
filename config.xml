@@ -22,7 +22,7 @@
     <preference name="target-device"        value="universal" />
     <preference name="fullscreen"           value="false" />
     <preference name="autorotate"           value="false" readonly="true" />
-    <preference name="AutoHideSplashScreen" value="false" />
+    <preference name="AutoHideSplashScreen" value="true" />
     <preference name="OpenAllWhitelistURLsInWebView" value="No" />
 
 
