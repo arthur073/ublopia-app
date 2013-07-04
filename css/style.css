@@ -20,6 +20,7 @@ div#container {
 .navbar-inverse .navbar-inner {
     height: 50px;
     padding-top: 10px;
+    border-radius: 0px !important;
 }
 
 .navbar-inverse .navbar-inner a.brand {
