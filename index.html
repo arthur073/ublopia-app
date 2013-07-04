@@ -87,45 +87,54 @@
 
 
 <script>
+    function httpGet(theUrl)
+    {
+        $.support.cors = true;
+        $.mobile.allowCrossDomainPages = true;
+        var xmlHttp = null;
 
+        xmlHttp = new XMLHttpRequest();
+        xmlHttp.open( "GET", theUrl, false );
+        xmlHttp.send( null );
+        var jsonArray = JSON.parse(xmlHttp.responseText);
+        //alert(document.getElementById("listNotif").childNodes.length);
+
+        if (jsonArray.length > 1) {
+            // We have some notifications
+            document.getElementById('Connection').style.display = 'none';
+        } else if (document.getElementById("listNotif").childNodes.length <= 3) {
+            document.getElementById('Connection').style.display = 'block';
+        }
+
+
+        for (var i=1; i < jsonArray.length; i++){
+            var values = jsonArray[i].value.split('##');
+            insertElem(values[0],values[2],'eat.jpg');
+        }
+        setTimeout(function()
+                {
+                    document.getElementById("loader").style.display = 'none';
+                },
+                2000);
+    }
 
     function refresh() {
         document.getElementById("loader").style.display = 'inline';
-        checkConnection();
+        //checkConnection();
+        $.support.cors = true;
 
+        $.ajax({
+            success: function (data) {
+                alert("ok!");
+            },
+            error: function (req, status) {
+                alert("error");
+            },
+            cache: false,
+            url: "http://tuple-center.herokuapp.com/take/user1/notifications.json?passwd=356a192b7913b04c54574d18c28d46e6395428ab"
+        });
 
-        function httpGet(theUrl)
-        {
-            $.support.cors = true;
-            //$.mobile.allowCrossDomainPages = true;
-            var xmlHttp = null;
-
-            xmlHttp = new XMLHttpRequest();
-            xmlHttp.open( "GET", theUrl, false );
-            xmlHttp.send( null );
-            var jsonArray = JSON.parse(xmlHttp.responseText);
-            //alert(document.getElementById("listNotif").childNodes.length);
-
-            if (jsonArray.length > 1) {
-                // We have some notifications
-                document.getElementById('Connection').style.display = 'none';
-            } else if (document.getElementById("listNotif").childNodes.length <= 3) {
-                document.getElementById('Connection').style.display = 'block';
-            }
-
-
-            for (var i=1; i < jsonArray.length; i++){
-                var values = jsonArray[i].value.split('##');
-                insertElem(values[0],values[2],'eat.jpg');
-            }
-            setTimeout(function()
-                    {
-                        document.getElementById("loader").style.display = 'none';
-                    },
-                    2000);
-        }
-
-        httpGet("http://tuple-center.herokuapp.com/take/user1/notifications.json?passwd=356a192b7913b04c54574d18c28d46e6395428ab");
+        //httpGet("http://tuple-center.herokuapp.com/take/user1/notifications.json?passwd=356a192b7913b04c54574d18c28d46e6395428ab");
     }
 
     function insertElem(title, content, imglink) {
@@ -174,22 +183,22 @@
         var networkState = navigator.network.connection.type;
 
         /*var states = {};
-        states[Connection.UNKNOWN]  = 'Unknown connection';
-        states[Connection.ETHERNET] = 'Ethernet connection';
-        states[Connection.WIFI]     = 'WiFi connection';
-        states[Connection.CELL_2G]  = 'Cell 2G connection';
-        states[Connection.CELL_3G]  = 'Cell 3G connection';
-        states[Connection.CELL_4G]  = 'Cell 4G connection';
-        states[Connection.NONE]     = 'No network connection';   */
+         states[Connection.UNKNOWN]  = 'Unknown connection';
+         states[Connection.ETHERNET] = 'Ethernet connection';
+         states[Connection.WIFI]     = 'WiFi connection';
+         states[Connection.CELL_2G]  = 'Cell 2G connection';
+         states[Connection.CELL_3G]  = 'Cell 3G connection';
+         states[Connection.CELL_4G]  = 'Cell 4G connection';
+         states[Connection.NONE]     = 'No network connection';   */
 
         /*if (networkState != Connection.NONE && networkState != Connection.CELL_2G) {
 
-            document.getElementById('noConnection').style.display = 'none';
-            document.getElementById('Connection').style.display = 'block';
-        } else {
-            document.getElementById('noConnection').style.display = 'block';
-            document.getElementById('Connection').style.display = 'none';
-        }  */
+         document.getElementById('noConnection').style.display = 'none';
+         document.getElementById('Connection').style.display = 'block';
+         } else {
+         document.getElementById('noConnection').style.display = 'block';
+         document.getElementById('Connection').style.display = 'none';
+         }  */
     }
 
 </script>
