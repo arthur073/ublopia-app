@@ -5,9 +5,11 @@
     <meta name="format-detection" content="telephone=no" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <link href="css/style.css" rel="stylesheet" media="screen">
-    <link href="css/bootstrap.min.css" rel="stylesheet" media="screen">
+    <link href="css/bootstrap.min_b.css" rel="stylesheet" media="screen">
+
     <link href="css/bootstrap-responsive.min.css" rel="stylesheet">
+    <link href="css/style.css" rel="stylesheet" media="screen">
+
 
     <script type="text/javascript" src="phonegap.js"></script>
     <script type="text/javascript" src="js/jquery.min.js"></script>
@@ -28,6 +30,11 @@
             <img src="img/ajax-loader_b.gif"/>
         </div>
         <a id="btnRefresh" href="#" class="btn btn-danger pull-right" onclick="refresh();return false;">Refresh</a>
+
+        <div id="issueNetwork" class="pull-left" style="display: none">
+            <a id="btnWarning" href="#" class="btn btn-danger" data-toggle="popover" data-placement="bottom" data-content="The network is unreachable. Please check your settings and hit refresh." title="No network detected"><i class="icon-exclamation-sign icon-white"> </i> </a>
+        </div>
+
     </div>
 </div>
 
@@ -35,13 +42,14 @@
 
 
 
-    <p> -- Debug : <span id="debug">NONE</span> --</p>
+    <p style="display: block;"> -- Debug : <span id="debug">NONE</span> --</p>
+    <p style="display: block;"> -- GPS data : <span id="debugGPS">NONE</span> --</p>
 
     <div id="noConnection" class="text-center" style="display: none">
         <img class="text-center" src="img/nonetwork.jpg" style="width: 200px; height: 200px"/><br>
         No connection available
     </div>
-    <div id="Connection" class="text-center " >
+    <div id="Connection" class="text-center " style="display: none;">
         <img class="text-center blinkinf" src="img/network.png" style="width: 200px; height: 200px"/><br><br>
         Waiting for notifications
     </div>
@@ -50,21 +58,6 @@
     <div class="row-fluid">
         <div class="span10">
             <div id="listNotif" class="row-fluid">
-
-                <!--
-                <ul class="thumbnails">
-                    <li class="span4">
-                        <div class="thumbnail">
-                            <img data-src="holder.js/300x200" style="width: 300px; height: 150px;" src="img/shop.jpg">
-                            <div class="caption">
-                                <h3>Wanna go shopping ?</h3>
-                                <p>I have found your shopping list and you still have items to buy. Here is a shop where you can go !</p>
-                                <p><a href="#" class="btn btn-danger">Take me there !</a></p>
-                            </div>
-                        </div>
-                    </li>
-                </ul>
-
                 <ul class="thumbnails">
                     <li class="span4">
                         <div class="thumbnail">
@@ -72,11 +65,20 @@
                             <div class="caption">
                                 <h3>Want to see a movie ?</h3>
                                 <p>I know that you are interested in Sci-Fi movies, why don't you check this one out ?</p>
-                                <p><a href="#" class="btn btn-danger">Take me there !</a></p>
+
+                                <div class="btn-group">
+                                    <a href="#" class="btn btn-danger btn-large">Take me there !</a>
+                                    <a class="btn btn-danger dropdown-toggle btn-large" data-toggle="dropdown" href="#"><span class="caret"></span></a>
+
+                                    <ul class="dropdown-menu" role="menu" aria-labelledby="dropdownMenu">
+                                        <li><a tabindex="-1" href="#">Dismiss</a></li>
+                                        <li><a tabindex="-1" href="#">Another action</a></li>
+                                    </ul>
+                                </div>
                             </div>
                         </div>
                     </li>
-                </ul>   -->
+                </ul>
 
             </div>
         </div>
@@ -88,18 +90,22 @@
 
 <script>
 
-    setInterval(refresh,20000);
 
-    function refresh() {
-        document.getElementById("loader").style.display = 'inline';
-        //checkConnection();
+
+
+    var refresh = function() {
+        document.getElementById("loader").style.display = 'inline-block';
+        document.getElementById("issueNetwork").style.display = 'none';
+
         $.support.cors = true;
-
+        promise.ajaxTimeout = 10000;
         promise.get('http://tuple-center.herokuapp.com/take/user1/notifications.json?passwd=356a192b7913b04c54574d18c28d46e6395428ab&random='+Math.random()).then(function(error, text, xhr) {
             $("#debug").html(text.length);
 
             if (error) {
                 $("#debug").html('ERROR');
+                document.getElementById("loader").style.display = 'none';
+                document.getElementById("issueNetwork").style.display = 'inline';
                 return;
             }
 
@@ -108,7 +114,8 @@
             if (jsonArray.length > 1) {
                 // We have some notifications
                 document.getElementById('Connection').style.display = 'none';
-            } else if (document.getElementById("listNotif").childNodes.length <= 3) {
+            } else if (document.getElementById("listNotif").childNodes.length < 3) {
+                alert(document.getElementById("listNotif").childNodes.length);
                 document.getElementById('Connection').style.display = 'block';
             }
 
@@ -125,29 +132,6 @@
                     },
                     2000);
         });
-
-
-        /*$.ajax({
-            success: function (data) {
-
-                setTimeout(function()
-                        {
-                            document.getElementById("loader").style.display = 'none';
-                        },
-                        2000);
-            },
-            error: function (req, status) {
-                alert("error");
-                setTimeout(function()
-                        {
-                            document.getElementById("loader").style.display = 'none';
-                        },
-                        2000);
-            },
-            cache: false,
-            url: "http://tuple-center.herokuapp.com/take/user1/notifications.json?passwd=356a192b7913b04c54574d18c28d46e6395428ab"
-        });  */
-
     }
 
     function insertElem(title, content, imglink) {
@@ -175,7 +159,7 @@
         contentcaption.innerHTML = content;
 
         var buttoncaption = document.createElement("p");
-        buttoncaption.innerHTML = '<a href="#" class="btn btn-danger">Take me there !</a>';
+        buttoncaption.innerHTML = '<div class="btn-group"><a href="#" class="btn btn-danger btn-large">Take me there !</a><a class="btn btn-danger dropdown-toggle btn-large" data-toggle="dropdown" href="#"><span class="caret"></span></a><ul class="dropdown-menu" role="menu" aria-labelledby="dropdownMenu"><li><a tabindex="-1" href="#">Dismiss</a></li><li><a tabindex="-1" href="#">Another action</a></li></ul></div>';
 
         var caption = document.createElement("div");
         caption.className = "caption"
@@ -192,27 +176,51 @@
     }
 
 
-    function checkConnection() {
-        var networkState = navigator.network.connection.type;
 
-        /*var states = {};
-         states[Connection.UNKNOWN]  = 'Unknown connection';
-         states[Connection.ETHERNET] = 'Ethernet connection';
-         states[Connection.WIFI]     = 'WiFi connection';
-         states[Connection.CELL_2G]  = 'Cell 2G connection';
-         states[Connection.CELL_3G]  = 'Cell 3G connection';
-         states[Connection.CELL_4G]  = 'Cell 4G connection';
-         states[Connection.NONE]     = 'No network connection';   */
 
-        /*if (networkState != Connection.NONE && networkState != Connection.CELL_2G) {
 
-         document.getElementById('noConnection').style.display = 'none';
-         document.getElementById('Connection').style.display = 'block';
-         } else {
-         document.getElementById('noConnection').style.display = 'block';
-         document.getElementById('Connection').style.display = 'none';
-         }  */
+    // onSuccess Callback
+    //   This method accepts a `Position` object, which contains
+    //   the current GPS coordinates
+    //
+    var onSuccess = function(position) {
+        $("#debugGPS").html('Latitude: '          + position.coords.latitude          + '\n' +
+                'Longitude: '         + position.coords.longitude         + '\n' +
+                'Altitude: '          + position.coords.altitude          + '\n' +
+                'Accuracy: '          + position.coords.accuracy          + '\n' +
+                'Altitude Accuracy: ' + position.coords.altitudeAccuracy  + '\n' +
+                'Heading: '           + position.coords.heading           + '\n' +
+                'Speed: '             + position.coords.speed             + '\n' +
+                'Timestamp: '         + new Date(position.timestamp)      + '\n');
+    };
+
+    // onError Callback receives a PositionError object
+    //
+    function onError(error) {
+        $("#debugGPS").html('code: '    + error.code    + '\n' +
+                'message: ' + error.message + '\n');
     }
+
+
+    var checkPos = function() {
+        navigator.geolocation.getCurrentPosition(onSuccess, onError);
+    }
+
+
+
+
+
+
+    $(document).ready( function() {
+        setInterval(refresh,30000);
+        setInterval(checkPos,5000);
+        setTimeout(refresh,3000);
+        $('#btnWarning').popover();
+
+        var div = document.querySelector(".navbar");
+        div.style.top = (div.offsetTop) + "px";
+
+    });
 
 </script>
 

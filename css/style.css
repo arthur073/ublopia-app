@@ -14,6 +14,7 @@ div#container {
 .navbar-inverse {
     position: fixed;
     width: 100%;
+    z-index: 100;
 }
 
 .navbar-inverse .navbar-inner {
@@ -25,9 +26,10 @@ div#container {
     font-size: 180%;
 }
 
-#loader img {
-    position: fixed;
+#loader {
+    position: absolute;
     top : 20px;
+    left: 130px;
 }
 
 @keyframes clign {
@@ -55,17 +57,13 @@ div#container {
 }
 
 .blink1 {
-    animation:fade 1000ms 1;
-    -webkit-animation:fade 1000ms 1;
+    animation:fade 1500ms 1;
+    -webkit-animation:fade 1500ms 1;
 }
 
 .blinkinf {
     animation:clign 3000ms infinite;
     -webkit-animation:clign 3000ms infinite;
-}
-
-#loader {
-    margin-bottom: 10px;
 }
 
 
@@ -74,3 +72,4 @@ div#container {
     font-size: 180%;
     color: #ced5dd;
 }
+
