@@ -53,7 +53,7 @@
                     var values = jsonArray[i].value.split('##');
                     el = document.getElementById('thelist');
                     li = document.createElement('li');
-                    li.innerHTML = '<img src="img/eat2.jpg" class="shadow"/></li>';
+                    li.innerHTML = '<a href="elem.htm" data-transition="slide"><img src="img/eat2.jpg" class="shadow"/></a>';
                     el.insertBefore(li, el.childNodes[0]);
 
                     //         // TODO => change this li
@@ -72,7 +72,7 @@
 
             setTimeout( function(){
                 myScroll.refresh() ;
-            } , 500 ) ;
+            } , 1000 ) ;
         }
 
 
@@ -137,10 +137,12 @@
         <ul id="thelist">
             <li class="noNotif">
                 <img src="img/network.png">
-                No notification available.
+                No notification available. Pull down to reload.
+
             </li>
         </ul>
     </div>
+
 </div>
 
 </body>
