@@ -2,7 +2,11 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
+<<<<<<< HEAD
       <module fileurl="file://$PROJECT_DIR$/.idea/ublopia-app.iml" filepath="$PROJECT_DIR$/.idea/ublopia-app.iml" />
+=======
+      <module fileurl="file://$PROJECT_DIR$/.idea/mobile-app.iml" filepath="$PROJECT_DIR$/.idea/mobile-app.iml" />
+>>>>>>> bf3595b40430b1d0dbc568c8a9456f80181e3c13
     </modules>
   </component>
 </project>
