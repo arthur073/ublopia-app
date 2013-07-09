@@ -1,31 +1,56 @@
 <!DOCTYPE html>
-<!-- saved from url=(0072)http://jquerymobile.com/demos/1.0a4.1/docs/pages/transition-success.html -->
-<html class="ui-mobile landscape min-width-320px min-width-480px min-width-768px min-width-1024px"><script id="tinyhippos-injected">if (window.top.ripple) { window.top.ripple("bootstrap").inject(window, document); }</script><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8"><!--<base href="http://jquerymobile.com/demos/1.0a4.1/docs/pages/">--><base href=".">
-	<meta charset="utf-8">
-	<meta name="viewport" content="width=device-width, minimum-scale=1, maximum-scale=1"> 
-	<title>Ta-da!</title> 
-	<link rel="stylesheet" href="http://code.jquery.com/mobile/1.0a4.1/jquery.mobile-1.0a4.1.min.css">  
-	<link rel="stylesheet" href="http://jquerymobile.com/demos/1.0a4.1/docs/_assets/css/jqm-docs.css">
-	<script type="text/javascript" src="./elem_files/jquery-1.5.min.js"></script><style type="text/css"></style>
-	<script type="text/javascript" src="./elem_files/jquery.mobile-1.0a4.1.min.js"></script>
-</head> 
-<body class="ui-mobile-viewport"> 
 
-<div data-role="page" data-theme="e" data-url="" class="ui-page ui-body-e ui-page-active">
+<html class="ui-mobile landscape min-width-320px min-width-480px min-width-768px min-width-1024px"><script id="tinyhippos-injected">if (window.top.ripple) { window.top.ripple("bootstrap").inject(window, document); }</script>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0, minimum-scale=1.0, maximum-scale=1.0">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
 
-	<div data-role="header" data-theme="e" class="ui-bar-e ui-header" role="banner">
-		<h1 class="ui-title" tabindex="0" role="heading" aria-level="1">Ta-da!</h1>
-	</div><!-- /header -->
-	
-	<div data-role="content" class="ui-content" role="main">
-		<p>That was an animated page transition effect that we added with a <code>data-transition</code> attribute on the link.</p>
-		<p>Since it uses CSS transforms, this should be hardware accelerated on many mobile devices.</p>
-		<p>What do you think?</p>
-		<a href="http://jquerymobile.com/demos/1.0a4.1/docs/pages/docs-transitions.html" data-role="button" data-theme="b" data-rel="back" class="ui-btn ui-btn-up-b ui-btn-corner-all ui-shadow"><span class="ui-btn-inner ui-btn-corner-all"><span class="ui-btn-text">I like it</span></span></a>   
-	</div>
+    <title>Ublopia</title>
+
+    <script src="libs/jquery-1.7.1.js"></script>
+    <script src="js/jquery.mobile.min"></script>
+    <script src="libs/iscroll.js"></script>
+
+
+    <link href="css/bootstrap.min_b.css" rel="stylesheet" media="screen">
+    <link href="css/bootstrap-responsive.min.css" rel="stylesheet">
+    <link href="css/jquery.mobile.min.css" rel="stylesheet" media="screen">
+    <link href="css/style.css" rel="stylesheet" media="screen">
+
+
+</head>
+
+
+<body>
+
+<div id="elemPage" data-role="page">
+    <div id="header" >Ublopia</div>
+    <div id="elemPage_wrapper" >
+        <div id="scroller">
+
+            <ul id="thelist">
+                <li>
+                    <a href="#" data-role="button" data-rel="back">I like it</a>
+                </li>
+            </ul>
+        </div>
+    </div>
 </div>
 
+<script>
+
+    var myScroll = [];
+    $(document).delegate('[data-role="page"]', 'pagecreate', function () {
+        myScroll[this.id] = new iScroll(this.id + '_wrapper');
+        setTimeout(function () { document.getElementById('elemPage_wrapper').style.left = '0'; }, 800);
+
+    });
+
+</script>
 
 
 
-<div class="ui-loader ui-body-a ui-corner-all" style="top: 133.5px;"><span class="ui-icon ui-icon-loading spin"></span><h1>loading</h1></div></body></html>
+</body>
+</html>
