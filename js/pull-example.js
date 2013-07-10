@@ -14,6 +14,8 @@
         listSelector = "div.pull-demo-page ul#thelist";
 
 
+
+
     // This is the callback that is called when the user has completed the pull-down gesture.
     // Your code should initiate retrieving data from a server, local database, etc.
     // Typically, you will call some function like jQuery.ajax() that will make a callback
@@ -37,16 +39,28 @@
 //                return;
 //            }
 
+
+
             var jsonArray = JSON.parse(text);
+
+            if (jsonArray.length > 1) {
+                // We have some notifications
+                $(".noNotif").hide();
+            } else if ($(listSelector).children('li').length  < 1) {
+                // We should display noNotif
+                alert("size : "+$(listSelector).children('li').length);
+                $(".noNotif").show();
+            }
+
             var newContent = "";
             for (var i=1; i < jsonArray.length; i++){
-                //var values = jsonArray[i].value.split('##');
-                newContent = '<a href="#elem" data-transition="slide"><img src="img/eat2.jpg" class="shadow" /></a>' + newContent;
+                var values = jsonArray[i].value;
+                newContent = '<div class="shadow"><a href="#elem" data-transition="slide" onclick="fillVal(this)" val="'+values+'"><img src="img/eat2.jpg" /></a> <span class="caption">' + values.split("##")[0] + '<a href="#elem" class="btn btn-primary pull-right" onclick="fillVal(this)" val="'+values+'" data-transition="slide">More details</a> </span></div>' + newContent;
             }
-            //alert("he"+ listSelector);
 
             $(listSelector).prepend(newContent);//.listview("refresh");  // Prepend new content and refresh listview
-            data.iscrollview.refresh();    // Refresh the iscrollview
+
+            setTimeout(function() { data.iscrollview.refresh(); }, 500);    // Refresh the iscrollview
         });
 
 
