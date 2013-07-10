@@ -55,7 +55,7 @@
             var newContent = "";
             for (var i=1; i < jsonArray.length; i++){
                 var values = jsonArray[i].value;
-                newContent = '<div class="shadow"><a href="#elem" data-transition="slide" onclick="fillVal(this)" val="'+values+'"><img src="img/eat2.jpg" /></a> <span class="caption">' + values.split("##")[0] + '<a href="#elem" class="btn btn-primary pull-right" onclick="fillVal(this)" val="'+values+'" data-transition="slide">More details</a> </span></div>' + newContent;
+                newContent = '<div class="shadow"><a href="#elem" data-transition="slide" onclick="fillVal(this)" val="'+values+'"><img src="img/eat2.jpg" /></a> <span class="caption">' + values.split("##")[0] + '<a href="#elem" class="btn btn-primary pull-right btn-large" onclick="fillVal(this)" val="'+values+'" data-transition="slide">More details</a> </span></div>' + newContent;
             }
 
             $(listSelector).prepend(newContent);//.listview("refresh");  // Prepend new content and refresh listview

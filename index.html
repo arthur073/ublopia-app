@@ -53,7 +53,7 @@
             var values = $("#divVal").html().split("##");
 
             $("#elemTitle").html(values[0]);
-            $("#elemContent").html(values[2]+".");
+            $("#elemContent").html(values[2]);
 
             var gpsData = values[3].split('$$');
             var yourStartLatLng = new google.maps.LatLng(gpsData[0].split(',')[0], gpsData[0].split(',')[1]);
@@ -84,7 +84,7 @@
 <body>
 <div class="pull-demo-page" data-role="page" id="main">
     <div data-id="header" data-position="fixed" data-role="header" data-tap-toggle="false" data-transition="none">
-        <h1>Ublopia</h1> <a href="#elem?val=gnagna" data-transition="slide"> _PAGE2</a>
+        <h1>Ublopia</h1>
     </div>
 
 
