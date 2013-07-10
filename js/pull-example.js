@@ -11,7 +11,7 @@
 (function pullPagePullImplementation($) {
     "use strict";
     var pullDownGeneratedCount = 0,
-        listSelector = "div.pull-demo-page ul.ui-listview";
+        listSelector = "div.pull-demo-page ul#thelist";
 
 
     // This is the callback that is called when the user has completed the pull-down gesture.
@@ -23,12 +23,12 @@
     function onPullDown (event, data) {
 
 
-        $.support.cors = true;
-        promise.ajaxTimeout = 10000;
+        //$.support.cors = true;
+        //promise.ajaxTimeout = 20000;
         promise.get('http://tuple-center.herokuapp.com/take/user1/notifications.json?passwd=356a192b7913b04c54574d18c28d46e6395428ab&random='+Math.random()).then(function(error, text, xhr) {
 
 
-
+            // todo error and no notification to handle
 
             //     if (error) {
 //                $("#debug").html('ERROR');
@@ -39,12 +39,13 @@
 
             var jsonArray = JSON.parse(text);
             var newContent = "";
-
             for (var i=1; i < jsonArray.length; i++){
-                var values = jsonArray[i].value.split('##');
-                newContent = '<a href="#elem?val='+values + '" data-transition="slide"><img src="img/eat2.jpg" class="shadow" /></a>' + newContent;
+                //var values = jsonArray[i].value.split('##');
+                newContent = '<a href="#elem" data-transition="slide"><img src="img/eat2.jpg" class="shadow" /></a>' + newContent;
             }
-            $(listSelector).prepend(newContent).listview("refresh");  // Prepend new content and refresh listview
+            //alert("he"+ listSelector);
+
+            $(listSelector).prepend(newContent);//.listview("refresh");  // Prepend new content and refresh listview
             data.iscrollview.refresh();    // Refresh the iscrollview
         });
 
@@ -56,7 +57,7 @@
 
 
     // Set-up jQuery event callbacks
-    $(document).delegate("div.pull-demo-page", "pageinit",
+    $(document).delegate("div#main", "pageinit",
         function bindPullPagePullCallbacks(event) {
             $(".iscroll-wrapper", this).bind( {
                 iscroll_onpulldown : onPullDown
