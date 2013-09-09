@@ -43,9 +43,11 @@ function failure(error) {
 }
 
 function scan() {
-    $.mobile.showPageLoadingMsg();
+    //$.mobile.showPageLoadingMsg();
 
+	alert("starting to scan");
 	var scanner = cordova.require("cordova/plugin/BarcodeScanner");
+	alert("plugin loaded...");
 
     scanner.scan(
       function (result) {
@@ -60,7 +62,7 @@ function scan() {
    );
 	// Useless for android
     // See ScanditSDK.h for more available options.
-    cordova.exec(success, failure, "ScanditSDK", "scan",
+    /*cordova.exec(success, failure, "ScanditSDK", "scan",
         [ScanditAppID,
             {"beep": true,
                 "1DScanning" : true,
@@ -77,7 +79,7 @@ function scan() {
                 "minSearchBarBarcodeLength" : 8,
                 "maxSearchBarBarcodeLength" : 50}]);
 
-
+*/
 }
         
 
