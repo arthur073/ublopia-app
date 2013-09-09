@@ -169,6 +169,7 @@ div.ui-page {
 
 #map_canvas {
     height: 30em;
+	width: 90%;
     margin: auto;
     margin-bottom: 10%;
     -webkit-box-shadow: 0px 3px 10px rgba(50, 50, 50, 0.89);
