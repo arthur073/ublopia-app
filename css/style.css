@@ -1,0 +1,424 @@
+
+@font-face
+{
+    font-family: TitleFont;
+    src: url('../assets/Lobster.ttf'),
+    url('../assets/Lobster.ttf'); /* IE9 */
+}
+
+@font-face
+{
+    font-family: weatherfont;
+    src: url('../assets/Roboto-Regular.ttf'),
+    url('../assets/Roboto-Regular.ttf'); /* IE9 */
+}
+
+@font-face
+{
+    font-family: CaptionFont;
+    src: url('../assets/DroidSans-Bold.ttf'),
+    url('../assets/DroidSans-Bold.ttf'); /* IE9 */
+}
+
+body
+{
+    font-family: Arial;
+    margin: 0px;
+    padding: 0px !important;
+}
+
+
+.ui-header {
+    height: 80px;
+}
+
+div.ui-header {
+    width: 100%;
+}
+
+.ui-title {
+    font-family: titlefont;
+    font-size: 250% !important;
+    padding-top: 0px !important;
+    line-height: 80px;
+    text-align: center !important;
+    position: relative;
+    top: -0.5em;
+    min-width: 150px;
+}
+
+.ui-btn-left, .ui-btn-right {
+    position: relative;
+    top: 25px !important;
+}
+
+.shadow {
+    display: block;
+    box-shadow: 1px 1px 12px #555;
+    margin: auto;
+}
+
+div.iscroll-scroller {
+    background-color: white;
+    width: 100%;
+}
+
+
+div.iscroll-content {
+    width: 100%;
+    padding: 0px !important;
+}
+
+ul#thelist {
+    list-style:none;
+    padding:0;
+    margin:0;
+    text-align:left;
+    width: 100%;
+
+}
+
+ul#thelist li {
+    padding:0 10px;
+    min-height:40px;
+    line-height:40px;
+    font-size:14px;
+}
+
+ul#thelist span a.ui-btn {
+    float:right;
+    position: relative;
+    top: -10px;
+}
+
+ul#thelist div.shadow {
+    width: 95%;
+    background-image: -webkit-gradient(linear,left top,left bottom,from(#ffffff),to(#111));
+    background-image: -webkit-linear-gradient(#ffffff,#111);
+    background-image: -moz-linear-gradient(#ffffff,#111);
+    background-image: -ms-linear-gradient(#ffffff,#111);
+    background-image: -o-linear-gradient(#ffffff,#111);
+    background-image: linear-gradient(#ffffff,#111);
+}
+
+ul#thelist img {
+    width: 100%;
+}
+
+
+.noNotif {
+    min-height: 500px;
+    text-align: center;
+    border: none;
+    background-color: white;
+    width: 100% !important;
+    display: block;
+    color: #aaa;
+    font-family: captionfont;
+    line-height: 1em !important;
+    font-weight: normal;
+}
+
+.noNotif img {
+    margin: 30% auto auto !important;
+    opacity: 0.5;
+    width: 30% !important;
+    display: block !important;
+    max-height: none !important;
+    max-width: none !important;
+    position: relative !important;
+    bottom: 1em;
+    float: none !important;
+}
+
+div.iscroll-pulldown {
+    border-bottom: #c9c9c9 solid 1px;
+    border-top: #c9c9c9 solid 1px;
+    background-color: #ffffff;
+}
+
+div.ui-page {
+    background-color: white !important;
+}
+
+
+.elemDetails p {
+    font-size: 100%;
+}
+
+.elemDetails h2 {
+    font-size: 140%;
+}
+
+.elemDetails li {
+    border: none;
+}
+
+.elemDetails {
+    display: block;
+}
+
+.elemDetails li h2, .elemDetails li p {
+    padding: 3%;
+    white-space: normal;
+}
+
+#elem .iscroll-scroller {
+    background-color: #333;
+}
+
+#map_canvas {
+    height: 30em;
+    margin: auto;
+    margin-bottom: 10%;
+    -webkit-box-shadow: 0px 3px 10px rgba(50, 50, 50, 0.89);
+    -moz-box-shadow:    0px 3px 10px rgba(50, 50, 50, 0.89);
+    box-shadow:         0px 3px 10px rgba(50, 50, 50, 0.89);
+    font-weight: normal;
+    color: black;
+    text-shadow: none;
+}
+
+span.caption {
+    color:white;
+    display: block;
+    padding-left: 20px;
+
+    width: 100%;
+    position: relative;
+    top: -10px;
+    left: -10px;
+    font-family: titlefont;
+    font-size: 150% !important;
+
+    padding-top: 30px;
+    font-size: 150%;
+    height: 50px;
+}
+
+span.caption a {
+    font-family: arial;
+    margin-right: 20px;
+}
+
+#elem h2#elemTitle {
+    font-family: titlefont;
+    font-weight: bold;
+    font-size: 200%;
+}
+
+
+
+#elem .elemDetails, #elem .elemDetails2 {
+    list-style: none;
+    display: block;
+    padding-left: 5% !important;
+    padding-right: 5% !important;
+}
+
+#elem .elemDetails2 {
+    margin-bottom: 10%;
+}
+
+#elemContent {
+    text-align: justify;
+    margin: auto;
+    font-family: captionfont;
+    font-size: 100%;
+}
+
+#login {
+    background: #000000 none !important;
+}
+
+#login img {
+    width: 100%;
+}
+
+#login2 span.ui-btn-inner {
+    font-size: 80% !important;
+}
+
+#login2 div.content {
+    padding: 5% 6%;
+    line-height:1.3em;
+    font-family: captionfont;
+    font-size: 150%;
+
+}
+
+#login2 img {
+    display: block;
+    margin: auto !important;
+    float: none !important;
+    position: relative;
+    width: 50%;
+}
+
+
+.welcomeTitle {
+    font-size: 150%;
+    text-align: center;
+    margin-bottom: 20%;
+}
+
+.text-center {
+    text-align: center;
+}
+
+img.logoImg {
+    padding:3%;
+    height: 50px;
+    width: 50px;
+}
+
+
+.titleFont {
+    font-family: titlefont;
+}
+
+
+.buttonScan {
+    position: absolute;
+    bottom: 1em;
+    width: 80%;
+    margin-left: 5%;
+}
+
+/* WEATHER style */
+
+.weatherDiv {
+    min-height: 15em;
+    -webkit-box-shadow: 0px 3px 10px rgba(50, 50, 50, 0.89);
+    -moz-box-shadow:    0px 3px 10px rgba(50, 50, 50, 0.89);
+    box-shadow:         0px 3px 10px rgba(50, 50, 50, 0.89);
+    width: 95%;
+}
+
+.weatherDiv ul {
+    margin: 0;
+    padding: 0;
+}
+
+#weatherTitle {
+    text-transform: capitalize;
+    font-size: 20px !important;
+    font-family: titlefont;
+    color: #111111;
+    list-style: none;
+    line-height: 0 !important;
+}
+
+#weatherLocation {
+    font-family: titlefont;
+    color: #111111;
+    list-style: none;
+    font-size: 20px !important;
+
+}
+
+#weatherTemp {
+    color: #222222;
+    list-style: none;
+    margin-top: 0.6em;
+    font-weight: lighter;
+    font-family: weatherfont;
+    padding-left: 0 !important;
+    letter-spacing: -0.1em;
+    text-align: left;
+    font-size: 10em !important;
+}
+
+/* iPhone 4 ----------- */
+@media
+only screen and (-webkit-min-device-pixel-ratio : 1.5),
+only screen and (min-device-pixel-ratio : 1.5) {
+    #weatherTemp {
+        font-size: 10em !important;
+    }
+}
+/* iPads (portrait and landscape) ----------- */
+@media only screen
+and (min-device-width : 768px)
+and (max-device-width : 1024px)  {
+    #weatherTemp {
+        font-size: 18em !important;
+    }}
+
+
+
+/* iPads (portrait and landscape) ----------- */
+@media only screen
+and (min-device-width : 1536px)
+and (max-device-width : 2048px)  {
+    #weatherTemp {
+        font-size: 18em !important;
+    }}
+
+
+
+
+
+#weatherLocation small {
+    font-family: arial;
+    color: #888888;
+    font-size: 80%;
+}
+
+#weatherIcon {
+    list-style: none;
+    margin-bottom: 0;
+}
+
+
+#weatherIcon img {
+    margin: 20% auto auto !important;
+    opacity: 1;
+    width: 60% !important;
+    max-width: 128px !important;
+    max-height: 128px !important;
+}
+
+#weatherWind, #weatherHum {
+    text-align: center;
+    line-height: 0px !important;
+    list-style: none;
+}
+
+#weatherWind img, #weatherHum img {
+    opacity: 1;
+    margin-top: 0 !important;
+    max-width: 60px !important;
+    max-height: 60px !important;
+    min-height: 40px !important;
+    min-width:  40px !important;
+
+}
+
+#weatherWind span, #weatherHum span {
+    font-size: 40px !important;
+     color: #111111;
+}
+
+#weatherWind table,#weatherHum table {
+    width: 100%;
+}
+
+#weatherWind tr, #weatherHum tr {
+    line-height: 40px;
+
+}
+
+#weatherWind td.text, #weatherHum td.text {
+    position: relative;
+    top: -0.5em;
+    font-size: 150% !important;
+    color: #111111;
+    text-align: left;
+    font-family: titlefont;
+}
+
+#weatherWind td.img, #weatherHum td.img {
+    width: 60%;
+}
+
