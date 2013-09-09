@@ -40,6 +40,7 @@
     -->
     <gap:plugin name="com.phonegap.plugins.barcodescanner"/>
 	<plugin name="Storage" value="org.apache.cordova.Storage" />
+	<plugin name="Geolocation" value="org.apache.cordova.GeoBroker" />
 
 
 

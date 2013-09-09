@@ -322,6 +322,7 @@ var refreshButton = function() {
 
 
 var getweather = function(lat, long) {
+	alert('getting weather');
     promise.get('http://api.wunderground.com/api/a8d22c8e45b2870a/conditions/q/'+lat+','+long+'.json').then(function(error, text, xhr) {
         var jsonArray = JSON.parse(text);
 
@@ -358,7 +359,6 @@ var getweather = function(lat, long) {
         <a href="javascript:scan()">
             <img src="img/qr_icon.png"/>
         </a>
-		<p><a href="#" class="topcoat-button" id="scan">SCAN SOMETHING</a></p>
         <p class="text-center">Login by flashing your personal code.</p>
 
 

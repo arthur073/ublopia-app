@@ -1,14 +1,10 @@
 
 function success(concatResult) {
-	//alert("Result: " + concatResult);
     var name = concatResult.split('##')[0];
-	alert('Nom trouvé ' +name);
     var password = concatResult.split('##')[1];
-    //$.mobile.hidePageLoadingMsg();
 
 
     function populateDB(tx) {
-		alert('populating db');
         tx.executeSql('DROP TABLE IF EXISTS USER');
         tx.executeSql('CREATE TABLE IF NOT EXISTS USER (id unique, data)');
         tx.executeSql('INSERT INTO USER (id, data) VALUES (1, "'+ name + '##'+ password + '")');
@@ -19,7 +15,6 @@ function success(concatResult) {
     }
 
     function successCB() {
-		alert('changing to main db');
 
         $.mobile.changePage( "#main", {
             transition: "pop",
@@ -41,8 +36,6 @@ function failure(error) {
     if (error != "Canceled") {
         alert("Failed to scan, please try again. Error : "+error);
     }
-    //$.mobile.hidePageLoadingMsg();
-
 }
 
 function scan() {
@@ -57,7 +50,7 @@ function scan() {
       }
    );
 
-	// Useless for android
+	// Useless for android, OK for iOS
     // See ScanditSDK.h for more available options.
     /*cordova.exec(success, failure, "ScanditSDK", "scan",
         [ScanditAppID,
