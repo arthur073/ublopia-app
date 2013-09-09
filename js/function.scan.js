@@ -1,13 +1,14 @@
 
 function success(concatResult) {
-	alert("Result: " + concatResult);
+	//alert("Result: " + concatResult);
     var name = concatResult.split('##')[0];
-	alert(name);
+	alert('Nom trouvé' +name);
     var password = resultArray[1].split('##')[1];
-    $.mobile.hidePageLoadingMsg();
+    //$.mobile.hidePageLoadingMsg();
 
 
     function populateDB(tx) {
+		alert('populating db');
         tx.executeSql('DROP TABLE IF EXISTS USER');
         tx.executeSql('CREATE TABLE IF NOT EXISTS USER (id unique, data)');
         tx.executeSql('INSERT INTO USER (id, data) VALUES (1, "'+ name + '##'+ password + '")');
@@ -18,6 +19,8 @@ function success(concatResult) {
     }
 
     function successCB() {
+		alert('changing to main db');
+
         $.mobile.changePage( "#main", {
             transition: "pop",
             reverse: false,
@@ -38,7 +41,7 @@ function failure(error) {
     if (error != "Canceled") {
         alert("Failed to scan, please try again. Error : "+error);
     }
-    $.mobile.hidePageLoadingMsg();
+    //$.mobile.hidePageLoadingMsg();
 
 }
 
