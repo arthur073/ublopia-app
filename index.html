@@ -132,7 +132,7 @@ $(document).on("pagebeforeshow", "#elem", function() {
 //-------------------------------------------------------------------
 
 var watchPos = function() {
-    navigator.geolocation.getCurrentPosition(onSuccess, onError, {enableHighAccuracy: true});
+    navigator.geolocation.getCurrentPosition(onSuccess, onError, {enableHighAccuracy: false});
 }
 
 $(document).on("pageinit", "#main", function() {
