@@ -46,17 +46,19 @@ function scan() {
     //$.mobile.showPageLoadingMsg();
 
 	   alert("starting to scan");
-       window.plugins.barcodeScanner.scan(
-		function(result) {
-				if (result.cancelled)
-					alert("the user cancelled the scan")
-				else
-					alert("we got a barcode: " + result.text)
-			},
-			function(error) {
-				alert("scanning failed: " + error)
-			}
-		)
+         var scanner = cordova.require("cordova/plugin/BarcodeScanner");
+
+   scanner.scan(
+      function (result) {
+          alert("We got a barcode\n" +
+                "Result: " + result.text + "\n" +
+                "Format: " + result.format + "\n" +
+                "Cancelled: " + result.cancelled);
+      }, 
+      function (error) {
+          alert("Scanning failed: " + error);
+      }
+   );
     	alert("finished to scan");
 
 	// Useless for android
