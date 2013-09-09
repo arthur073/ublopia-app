@@ -16,7 +16,7 @@
         Arthur Verger
     </author>
 
-
+    <preference name="phonegap-version" value="2.9.0" />
     <feature name="http://api.phonegap.com/1.0/device" />
     <preference name="permissions" value="none" />
     <preference name="orientation" value="default" />
