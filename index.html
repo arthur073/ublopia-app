@@ -46,7 +46,7 @@
 var username = "";
 var userpassword = "";
 
-
+var gotWeather = false;
 var value = "";
 var size = 0;
 
@@ -322,20 +322,20 @@ var refreshButton = function() {
 
 
 var getweather = function(lat, long) {
-	alert('getting weather');
-    promise.get('http://api.wunderground.com/api/a8d22c8e45b2870a/conditions/q/'+lat+','+long+'.json').then(function(error, text, xhr) {
-        var jsonArray = JSON.parse(text);
-
-        $('#weatherLocation').html(jsonArray.current_observation.display_location.city + ', <small>'+jsonArray.current_observation.display_location.state_name+'</small>');
-        $('#weatherTemp').html(Math.round(jsonArray.current_observation.temp_c));
-        $('#weatherTitle').html(jsonArray.current_observation.weather);
-        $('#weatherWind td.text').html(jsonArray.current_observation.wind_kph + ' <small>km/h</small>');
-        $('#weatherHum td.text').html(jsonArray.current_observation.relative_humidity.slice(0,-1) + ' <small>%</small>');
-        var icon = jsonArray.current_observation.icon_url.split('/')[jsonArray.current_observation.icon_url.split('/').length-1].split('.')[0];
-        $("#weatherIcon img").attr('src', 'img/'+icon+'.png');
-        alert('Updated Weather !');
-
-    });
+	//alert('getting weather');
+	if (gotWeather == false) {
+		promise.get('http://api.wunderground.com/api/a8d22c8e45b2870a/conditions/q/'+lat+','+long+'.json').then(function(error, text, xhr) {
+			var jsonArray = JSON.parse(text);
+			$('#weatherLocation').html(jsonArray.current_observation.display_location.city + ', <small>'+jsonArray.current_observation.display_location.state_name+'</small>');
+			$('#weatherTemp').html(Math.round(jsonArray.current_observation.temp_c));
+			$('#weatherTitle').html(jsonArray.current_observation.weather);
+			$('#weatherWind td.text').html(jsonArray.current_observation.wind_kph + ' <small>km/h</small>');
+			$('#weatherHum td.text').html(jsonArray.current_observation.relative_humidity.slice(0,-1) + ' <small>%</small>');
+			var icon = jsonArray.current_observation.icon_url.split('/')[jsonArray.current_observation.icon_url.split('/').length-1].split('.')[0];
+			$("#weatherIcon img").attr('src', 'img/'+icon+'.png');
+		});
+		gotWeather = true;
+	}
 }
 
 </script>
