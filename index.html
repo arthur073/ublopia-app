@@ -189,7 +189,6 @@ $(document).on("pageinit", "#login", function() {
     setTimeout( function() {
         // todo test DB to see if logged in, if yes
         var newPage = '#login2';
-		alert("heeee");
 
         // Wait for Cordova to load
         //
@@ -224,8 +223,6 @@ $(document).on("pageinit", "#login", function() {
         // Transaction error callback
         //
         function errorCB(err) {
-			alert("error DB");
-
             $.mobile.changePage( newPage, {
                 transition: "pop",
                 reverse: false,
@@ -234,7 +231,6 @@ $(document).on("pageinit", "#login", function() {
         }
 
         function onDeviceReady() {
-			alert("device ready");
             var db = window.openDatabase("Database", "1.0", "Cordova Demo", 200000);
             db.transaction(queryDB, errorCB);
         }

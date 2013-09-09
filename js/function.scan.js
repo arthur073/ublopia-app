@@ -1,7 +1,8 @@
 
 function success(concatResult) {
-    var resultArray = concatResult.split("|");
-    var name = resultArray[1].split('##')[0];
+	alert("Result: " + concatResult);
+    var name = concatResult.split('##')[0];
+	alert(name);
     var password = resultArray[1].split('##')[1];
     $.mobile.hidePageLoadingMsg();
 
@@ -31,7 +32,6 @@ function success(concatResult) {
 
     username = name;
     userpassword = password;
-
 }
 
 function failure(error) {
@@ -43,23 +43,16 @@ function failure(error) {
 }
 
 function scan() {
-    //$.mobile.showPageLoadingMsg();
 
-	   alert("starting to scan");
-         var scanner = cordova.require("cordova/plugin/BarcodeScanner");
-
+   var scanner = cordova.require("cordova/plugin/BarcodeScanner");
    scanner.scan(
       function (result) {
-          alert("We got a barcode\n" +
-                "Result: " + result.text + "\n" +
-                "Format: " + result.format + "\n" +
-                "Cancelled: " + result.cancelled);
+		  success(result.text);
       }, 
       function (error) {
           alert("Scanning failed: " + error);
       }
    );
-    	alert("finished to scan");
 
 	// Useless for android
     // See ScanditSDK.h for more available options.
