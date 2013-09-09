@@ -2,8 +2,8 @@
 function success(concatResult) {
 	//alert("Result: " + concatResult);
     var name = concatResult.split('##')[0];
-	alert('Nom trouvé' +name);
-    var password = resultArray[1].split('##')[1];
+	alert('Nom trouvé ' +name);
+    var password = concatResult.split('##')[1];
     //$.mobile.hidePageLoadingMsg();
 
 
@@ -27,15 +27,14 @@ function success(concatResult) {
             changeHash: false
         });
     }
-	//alert('querying db');
-    //var db = window.openDatabase("Database", "1.0", "Cordova Demo", 200000);
-    //db.transaction(populateDB, errorCB, successCB);
+
+    var db = window.openDatabase("Database", "1.0", "Cordova Demo", 200000);
+    db.transaction(populateDB, errorCB, successCB);
 
 
 
     username = name;
     userpassword = password;
-	successCB();
 }
 
 function failure(error) {
