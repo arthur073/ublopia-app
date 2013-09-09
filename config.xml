@@ -24,8 +24,7 @@
     <preference name="autorotate"           value="false" readonly="true" />
     <preference name="AutoHideSplashScreen" value="true" />
     <preference name="OpenAllWhitelistURLsInWebView" value="No" />
-
-
+	<preference name="android-maxSdkVersion" value="16" />
     <!-- Plugins can also be added here. -->
     <!--
         <gap:plugin name="Example" />
